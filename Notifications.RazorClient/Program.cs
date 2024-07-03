@@ -9,9 +9,11 @@ namespace Notifications.RazorClient
             // Add services to the container.
             builder.Services.AddRazorPages();
 
+            var signalrBaseUri = builder.Configuration["Urls:BaseUrl"] ?? throw new Exception();
+
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll", builder => builder.WithOrigins("http://localhost:5026").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+                options.AddPolicy("AllowAll", builder => builder.WithOrigins(signalrBaseUri).AllowAnyMethod().AllowAnyHeader().AllowCredentials());
             });
 
             var app = builder.Build();

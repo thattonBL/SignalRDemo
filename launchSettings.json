@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "notifications.api": "StartDebugging",
+        "notifications.razorclient": "StartDebugging"
+      }
+    }
+  }
+}

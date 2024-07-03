@@ -3,3 +3,6 @@ Notifications.Api/bin
 Notifications.Api/obj
 Notifications.Client/bin
 Notifications.Client/obj
+bin
+Notifications.RazorClient/obj
+obj

@@ -22,7 +22,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+var signalRClientUrl = builder.Configuration["ClientUrls:GlobalIntegrationUI"] ?? throw new Exception();
+
+app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(signalRClientUrl).AllowCredentials());
 
 app.UseAuthorization();
 

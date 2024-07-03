@@ -1,0 +1,23 @@
+version: '3.4'
+
+networks:
+  gatewaynetwork:
+    driver: bridge
+
+services:
+  notifications.razorclient:
+    container_name: notifications-razorclient
+    image: ${DOCKER_REGISTRY-}notificationsrazorclient
+    build:
+      context: .
+      dockerfile: Notifications.RazorClient/Dockerfile
+
+  notifications.api:
+    container_name: notifications-api
+    image: ${DOCKER_REGISTRY-}notificationsapi
+    build:
+      context: .
+      dockerfile: Notifications.Api/Dockerfile
+    networks:
+        - gatewaynetwork
+

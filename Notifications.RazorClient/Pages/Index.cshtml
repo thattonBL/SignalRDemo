@@ -1,4 +1,7 @@
 ﻿@page
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -10,4 +13,11 @@
     <ul id="messagesList">
     </ul>
 </div>
+
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/site.js"></script>
+<script>
+    console.log('from settings ' + @Json.Serialize(Configuration["Urls:BaseUrl"]));
+    var connectionBaseUrl = @Json.Serialize(Configuration["Urls:BaseUrl"]);
+    initiateConnection(connectionBaseUrl);
+</script>
