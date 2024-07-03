@@ -9,13 +9,6 @@ namespace Notifications.RazorClient
             // Add services to the container.
             builder.Services.AddRazorPages();
 
-            var signalrBaseUri = builder.Configuration["Urls:BaseUrl"] ?? throw new Exception();
-
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAll", builder => builder.WithOrigins(signalrBaseUri).AllowAnyMethod().AllowAnyHeader().AllowCredentials());
-            });
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -28,8 +21,6 @@ namespace Notifications.RazorClient
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseCors("AllowAll");
             app.UseRouting();
 
             app.UseAuthorization();
